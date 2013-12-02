@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% block head_title %}简言简语-语落世界{% endblock head_title %}
+{% block body %}
+			
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+
+				<!-- Main -->
+					<div id="main" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+								<div id="content" class="12u skel-cell-mainContent">
+
+									<!-- Post -->
+                                    {% for brief_detail in brief_list %}
+										<article class="is-post">
+											<header>
+												<h2>简言简语{{ forloop.counter }}</h2>
+											</header>
+                                            {% if brief_detail.thumbnail %}
+											<span class="image image-full">
+                                                <img src="{{ MEDIA_URL }}{{ brief_detail.thumbnail }}" alt="pictures" width="781" />
+                                            </span>
+                                            {% endif %}
+											<h3>{{ brief_detail.createtime }} -- 创建人: {{ brief_detail.user }}</h3>
+											<p>
+                                                {{ brief_detail.brief|linebreaksbr }}
+											</p>
+										</article>
+								    {% endfor %}
+                                {% if is_paginated %}
+{#                                    <div class="pagination">#}
+                                    <article class="is-highlight">
+                                        <span class="page-links">
+                                            {% if page_obj.has_previous %}
+                                                <a href="{% url 'brief' %}?page={{ page_obj.previous_page_number }}">上一页</a>
+                                            {% endif %}
+                                            <span class="page-current">
+                                                第 {{ page_obj.number }} 页， 共 {{ page_obj.paginator.num_pages }}页。
+                                            </span>
+                                            {% if page_obj.has_next %}
+                                                <a href="{% url 'brief' %}?page={{ page_obj.next_page_number }}">下一页</a>
+                                            {% endif %}
+                                        </span>
+                                    </article>
+{#                                    </div>#}
+                                {% endif %}
+								</div>
+
+						</div>
+					</div>
+
+			</div>
+
+{% endblock body %}

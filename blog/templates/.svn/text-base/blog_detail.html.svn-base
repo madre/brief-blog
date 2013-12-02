@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% block head_title %}{{ blog.title }}{% endblock head_title %}
+{% block body %}
+			
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+
+				<!-- Main -->
+					<div id="main" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+								<div id="content" class="12u skel-cell-mainContent">
+
+									<!-- Post -->
+										<article class="is-post">
+											<header>
+												<h2>{{ blog.title }}</h2>
+											</header>
+                                            {% if blog.thumbnail %}
+											<span class="image image-full">
+                                                <img src="{{ MEDIA_URL }}{{ blog.thumbnail }}" alt="{{ blog.title }}" width="781" />
+                                            </span>
+                                            {% endif %}
+											<h3>{{ blog.createtime }} -- 创建人: {{ blog.user }}</h3>
+											<p>
+                                                {{ blog.content | safe }}
+											</p>
+										</article>
+								
+								</div>
+
+						</div>
+					</div>
+
+			</div>
+
+{% endblock body %}

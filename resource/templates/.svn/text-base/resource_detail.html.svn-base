@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% block head_title %}{{ resource.title }}{% endblock head_title %}
+{% block body %}
+			
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+
+				<!-- Main -->
+					<div id="main" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+								<div id="content" class="8u skel-cell-mainContent">
+									<!-- Post -->
+										<article class="is-post">
+											<header>
+												<h2>{{ resource.title }}</h2>
+											</header>
+                                        <div>
+                                        <table class="style1">
+                                            <tbody>
+                                                <thead>
+                                                <tr style="text-align: left">
+                                                    <th>Resource Type</th>
+                                                    <th>{{ resource.resource_type }}</th>
+                                                </tr>
+                                                </thead>
+                                                <tr>
+                                                    <td>Summary</td> <td>{{ resource.help_text }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Level</td> <td>{{ resource.level }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Topics</td>
+                                                    <td>
+                                                        {% for topic in resource.topics.all %}
+                                                        {% if not forloop.first %}, {% endif %}<a href="{% url 'topic_detail' pk=topic.pk %}" class="">{{ topic.name }}</a>
+                                                        {% endfor %}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Submitted by</td>
+                                                    <td>{{ resource.user }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Date Submitted</td> <td>{{ resource.createtime|date:"D d M Y"  }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                        <ul class="actions">
+											<li><a href="{{ resource.url }}" class="button button-icon icon icon-file">打开资源地址</a></li>
+										</ul>
+                                        <p>
+                                            {{ resource.description | safe }}
+                                        </p>
+										</article>
+
+								</div>
+								
+							<!-- Sidebar -->
+								<div id="sidebar" class="4u">
+									<!-- Excerpts -->
+										<section>
+											<ul class="divided">
+                                            {% if topic_list %}
+                                                {% for panel in topic_list %}
+                                                {% if not panel.thumbnail %}
+												<li>
+													<!-- Excerpt -->
+														<article class="is-excerpt">
+															<header>
+																<span class="date">{{ panel.createtime }}</span>
+																<h3><a href="{% url 'topic_detail' pk=panel.id %}">{{ panel.title }}</a></h3>
+															</header>
+															<p>{{ panel.help_text|safe| truncatewords_html:10 }}</p>
+														</article>
+												</li>
+                                                {% else %}
+												<li>
+													<!-- Highlight -->
+														<article class="is-highlight">
+															<a href="{% url 'topic_detail' pk=panel.id %}" class="image image-left">
+                                                                <img src="{{ MEDIA_URL }}{{ panel.thumbnail }}" alt="{{ panel.title }}"/>
+                                                            </a>
+															<p>{{ panel.help_text|safe| truncatewords_html:10 }}</p>
+															<ul class="actions">
+																<li><a href="{% url 'topic_detail' pk=panel.id %}" class="button button-icon icon icon-file">
+                                                                    Learn More</a>
+                                                                </li>
+															</ul>
+														</article>
+
+												</li>
+                                                {% endif %}
+                                                {% endfor %}
+											</ul>
+                                        {% else %}
+                                                暂无数据
+                                        {% endif %}
+										</section>
+
+								</div>
+
+						</div>
+					</div>
+
+			</div>
+
+{% endblock body %}

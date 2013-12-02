@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/brief/!svn/ver/230/2/utils
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/brief/!svn/ver/230/2/utils/__init__.py
+END
+json_serializer.py
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/brief/!svn/ver/230/2/utils/json_serializer.py
+END
+renders.py
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/brief/!svn/ver/230/2/utils/renders.py
+END

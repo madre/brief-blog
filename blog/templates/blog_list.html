@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% block head_title %}{{ slug }}{% endblock head_title %}
+{% block body %}
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+
+				<!-- Main -->
+					<div id="main" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+								<div id="content" class="8u">
+									<!-- Post -->
+                                    {% if not blog_list %}
+                                    	暂无数据
+                                    {% else %}
+                                        {% for blog in blog_list %}
+										<article class="is-post">
+											<header>
+												<h2><a href="{% url 'blog_detail' pk=blog.id %}">{{ blog.title }}</a></h2>
+											</header>
+                                            {% if blog.thumbnail %}
+                                                <a href="{% url 'blog_detail' pk=blog.id %}"  class="image image-full">
+                                                <img src="{{ MEDIA_URL }}{{ blog.thumbnail }}" alt="{{ blog.title }}" width="781" />
+                                                </a>
+											{% endif %}
+                                            <h3>{{ blog.createtime }} -- 创建人: {{ blog.user }}</h3>
+											<p>
+                                                {{ blog.content |safe| truncatewords_html:30 }}
+                                            </p>
+											<ul class="actions">
+												<li><a href="{% url 'blog_detail' pk=blog.id %}" class="button button-icon icon icon-file">Continue Reading</a></li>
+											</ul>
+										</article>
+                                        {% endfor %}
+                                    {% endif %}
+                                {% if is_paginated %}
+{#                                    <div class="pagination">#}
+                                    <article class="is-highlight">
+                                        <span class="page-links">
+                                            {% if page_obj.has_previous %}
+                                                <a href="{% url 'blog_list' slug=slug %}?page={{ page_obj.previous_page_number }}">上一页</a>
+                                            {% endif %}
+                                            <span class="page-current">
+                                                第 {{ page_obj.number }} 页, 共 {{ page_obj.paginator.num_pages }}页。
+                                            </span>
+                                            {% if page_obj.has_next %}
+                                                <a href="{% url 'blog_list' slug=slug %}?page={{ page_obj.next_page_number }}">下一页</a>
+                                            {% endif %}
+                                        </span>
+                                    </article>
+{#                                    </div>#}
+                                {% endif %}
+								</div>
+
+							<!-- Sidebar -->
+								<div id="sidebar" class="4u">
+									<!-- Excerpts -->
+                                {% if archive %}
+                                    <h3 class="section-header">存档</h3>
+                                        {% for date in archive %}
+                                        <!-- I don't like the 'localtime off', but the way the view is done, the dates are all pushed the first hours of the month and pushes everything back a month in my timezone -->
+                                        <p>
+                                            <a href="{% url 'monthly_archive' slug date|date:'Y' date|date:'m'%}"> {{date|date:"M Y"}}</a>
+                                            <a href="{% url 'yearly_archive' slug date|date:'Y'%}" style="float:right; margin-right:33px"> {{date|date:"Y"}}</a>
+                                        </p>
+                                        {% endfor %}
+                                {% endif %}
+
+                                {% if tags %}
+                                    <h3 class="section-header">标签</h3>
+                                        {% for tag in tags %}
+                                            <a href="{% url 'blog_tags' slug=slug tags=tag.name %}"> {{ tag.name }}({{ tag.blog_set.all|length }})</a>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                        {% endfor %}
+                                {% endif %}
+										<section>
+											<ul class="divided">
+                                            {% if sidepanel %}
+                                                {% for panel in sidepanel %}
+                                                {% if not panel.thumbnail %}
+												<li>
+													<!-- Excerpt -->
+														<article class="is-excerpt">
+															<header>
+																<span class="date">{{ panel.createtime }}</span>
+																<h3><a href="{% url 'blog_detail' pk=panel.id %}">{{ panel.title }}</a></h3>
+															</header>
+															<p>{{ panel.content|safe|truncatewords_html:10 }}</p>
+														</article>
+												</li>
+                                                {% else %}
+												<li>
+													<!-- Highlight -->
+														<article class="is-highlight">
+															<a href="{% url 'blog_detail' pk=panel.id %}" class="image image-left">
+                                                                <img src="{{ MEDIA_URL }}{{ panel.thumbnail }}" alt="{{ panel.title }}"/>
+                                                            </a>
+															<p>{{ panel.content|safe|truncatewords_html:10 }}</p>
+															<ul class="actions">
+																<li><a href="{% url 'blog_detail' pk=panel.id %}" class="button button-icon icon icon-file">
+                                                                    Learn More</a>
+                                                                </li>
+															</ul>
+														</article>
+
+												</li>
+                                                {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                            暂无数据
+                                            {% endif %}
+											</ul>
+										</section>
+
+								</div>
+						</div>
+					</div>
+			</div>
+{% endblock body %}

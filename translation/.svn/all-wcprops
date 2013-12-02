@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/brief/!svn/ver/248/2/translation
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/brief/!svn/ver/230/2/translation/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/brief/!svn/ver/233/2/translation/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/brief/!svn/ver/230/2/translation/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/brief/!svn/ver/230/2/translation/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/brief/!svn/ver/230/2/translation/urls.py
+END

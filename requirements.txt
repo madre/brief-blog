@@ -1,0 +1,5 @@
+django>=1.5
+django-ckeditor
+django-grappelli
+PIL
+south

@@ -1,0 +1,30 @@
+name: brief 
+version: 1
+worker: django | wsgi
+
+libraries:
+- name: "django"
+  version: "1.5"
+
+- name: "django-ckeditor"
+  version: "4.0.2"
+
+- name: "django-grappelli"
+  version: "2.4.7"
+
+- name: "PIL"
+  version: "1.1.7"
+
+- name: "Pillow"
+  version: "2.2.1"
+
+- name: "south"
+  version: "0.8.2"
+
+handlers:
+- url: /static/
+  static_path: static
+
+- url: /favicon.ico
+  static_path: favicon.ico
+

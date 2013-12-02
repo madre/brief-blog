@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% block head_title %}首页-home page| Madre's World{% endblock head_title %}
+{% block body %}
+		<!-- Features Wrapper -->
+			<div id="features-wrapper">
+
+				<!-- Features -->
+					<section id="features" class="container">
+						<header>
+							<h2>旅行，是为了看看这世界的 <strong>现实</strong>!</h2>
+						</header>
+						<div class="row">
+                            {% for album in albums %}
+							<div class="4u">
+								<!-- Feature -->
+									<section>
+										<a href="{% url 'albums_detail' pk=album.id %}" class="image image-full">
+                                            <img src="{{ MEDIA_URL }}{{ album.thumbnail }}" alt="{{ album.title }}" />
+                                        </a>
+										<header>
+											<h3>{{ album.title }}</h3>
+										</header>
+										<p>
+                                            {{ album.description|linebreaksbr }}
+                                        </p>
+									</section>
+							</div>
+                            {% endfor %}
+						</div>
+						<ul class="actions">
+							<li><a href="#" class="button button-icon icon icon-file">Tell Me More</a></li>
+						</ul>
+					</section>
+			
+			</div>
+		
+		<!-- Banner Wrapper -->
+			<div id="banner-wrapper">
+				<div class="inner">
+
+					<!-- Banner -->
+						<section id="banner" class="container">
+							<p>Brief is life, but <strong>love is long</strong>.<br />
+							生命短暂，唯爱恒永！</p>
+						</section>
+
+				</div>
+			</div>
+
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+
+				<!-- Main -->
+					<div id="main" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+								<div id="content" class="8u">
+									<!-- Post -->
+                                        {% for blog in blogs|slice:"0:7" %}
+										<article class="is-post">
+											<header>
+												<h2><a href="{% url 'blog_detail' pk=blog.id %}">{{ blog.title }}</a></h2>
+											</header>
+                                            {% if blog.thumbnail %}
+                                            <a href="{% url 'blog_detail' pk=blog.id %}" class="image image-full">
+                                                <img src="{{ MEDIA_URL }}{{ blog.thumbnail }}" alt="{{ blog.title }}" width="781" />
+                                            </a>
+											{% endif %}
+                                            <h3>{{ blog.createtime }} -- 创建人: {{ blog.user }}</h3>
+											<p>
+                                                {{ blog.content |safe| truncatewords_html:30 }}
+                                            </p>
+											<ul class="actions">
+												<li><a href="{% url 'blog_detail' pk=blog.id %}" class="button button-icon icon icon-file">Continue Reading</a></li>
+											</ul>
+										</article>
+                                        {% endfor %}
+								</div>
+
+							<!-- Sidebar -->
+								<div id="sidebar" class="4u">
+									<!-- Excerpts -->
+										<section>
+                                        <header>
+                                        <p>番外文集</p>
+                                        </header>
+											<ul class="divided">
+                                            {% if sidepanel %}
+                                                {% for panel in sidepanel %}
+                                                {% if not panel.thumbnail %}
+												<li>
+													<!-- Excerpt -->
+														<article class="is-excerpt">
+															<header>
+																<h3><a href="{% url 'translation_detail' pk=panel.id %}">{{ panel.title }}</a></h3>
+															</header>
+															<p>{{ panel.o_t_content|safe| truncatewords_html:15 }}</p>
+                                                            <span class="date">{{ panel.createtime }}</span>
+														</article>
+												</li>
+                                                {% else %}
+												<li>
+													<!-- Highlight -->
+														<article class="is-highlight">
+															<a href="{% url 'translation_detail' pk=panel.id %}" class="image image-left">
+                                                                <img src="{{ MEDIA_URL }}{{ panel.thumbnail }}" alt="{{ panel.title }}"/>
+                                                            </a>
+															<p>{{ panel.o_t_content|safe| truncatewords_html:15 }}</p>
+															<ul class="actions">
+																<li><a href="{% url 'translation_detail' pk=panel.id %}" class="button button-icon icon icon-file">
+                                                                    Learn More</a>
+                                                                </li>
+															</ul>
+														</article>
+
+												</li>
+                                                {% endif %}
+                                                {% endfor %}
+											</ul>
+                                        {% else %}
+                                                暂无数据
+                                        {% endif %}
+										</section>
+
+								</div>
+						</div>
+					</div>
+			</div>
+{% endblock body %}

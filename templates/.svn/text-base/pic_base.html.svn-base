@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<html>
+	<head>
+		<title>{% block head_title %}图片秀{% endblock %} | Brief - brief is life, but love is long.</title>
+		<meta name="viewport" content="width=1120,user-scalable=no" />
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+	{% block extra_css %}
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script>-->
+		<script src="{% static "pic_show/js/jquery.min.js" %}"></script>
+		<script src="{% static "pic_show/js/jquery.poptrox-2.1.js" %}"></script>
+		<script src="{% static "pic_show/js/config.js" %}"></script>
+		<script src="{% static "pic_show/js/skel.min.js" %}"></script>
+		<noscript>
+			<link rel="stylesheet" href="{% static "pic_show/css/skel-noscript.css" %}" />
+			<link rel="stylesheet" href="{% static "pic_show/css/style.css" %}" />
+			<link rel="stylesheet" href="{% static "pic_show/css/style-desktop.css" %}" />
+			<link rel="stylesheet" href="{% static "pic_show/css/style-mobile.css" %}" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="{% static "pic_show/css/ie8.css" %}" /><![endif]-->
+    {% endblock %}
+	</head>
+	<body>
+		<div id="wrapper">
+        {% block body %}
+
+        {% endblock %}
+		{% block footer %}
+			<div id="footer">
+				<div class="left">
+                    <h1><a href="{% url "home"%}">回到首页</a></h1>
+					<p>
+                        I want to travel to at least one place I've never been each year. </br>
+                        Sometimes it will be a far away exotic land. Sometimes it will be just three towns over to a place I've never stayed before. </br>
+                        It doesn't have to be glamorous or expensive, but it must be an adventure.</br>
+					</p>
+				</div>
+				<div class="right">
+					<ul class="contact">
+                    <li>
+                        <a href="http://twitter.com/madre0205" class="icon icon-twitter"><span>Twitter</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/madre.ma.1" class="icon icon-facebook"><span>Facebook</span></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/u/0/100618357676115881170" class="icon icon-google-plus"><span>Google+</span></a>
+                    </li>
+					</ul>
+					<div id="copyright">
+						&copy; madre. Design: <a href="http://brief.sinaapp.com/">brief style</a>
+					</div>
+				</div>
+			</div>
+        {% endblock %}
+		</div>
+
+	</body>
+</html>

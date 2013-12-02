@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 28
+/brief/!svn/ver/248/2/albums
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/brief/!svn/ver/230/2/albums/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/brief/!svn/ver/233/2/albums/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/brief/!svn/ver/230/2/albums/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 38
+/brief/!svn/ver/230/2/albums/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/brief/!svn/ver/230/2/albums/urls.py
+END

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% block head_title %}番外文-浅陋翻译{% endblock head_title %}
+{% block body %}
+		<!-- Main Wrapper -->
+			<div id="main-wrapper">
+
+				<!-- Main -->
+					<div id="main" class="container">
+						<div class="row">
+						
+							<!-- Content -->
+								<div id="content" class="8u">
+									<!-- Post -->
+                                    {% if not translation_list %}
+                                    	暂无数据
+                                    {% else %}
+                                        {% for translation in translation_list|slice:"0:5" %}
+										<article class="is-post">
+											<header>
+												<h2>
+                                                    <a href="{% url 'translation_detail' pk=translation.id %}">
+                                                        原：{{ translation.title }} <br/>
+                                                        译：{{ translation.tran_title }}
+                                                    </a>
+                                                </h2>
+											</header>
+                                            {% if translation.thumbnail %}
+                                                <a href="{% url 'translation_detail' pk=translation.id %}"  class="image image-full">
+                                                <img src="{{ MEDIA_URL }}{{ translation.thumbnail }}" alt="{{ translation.title }}" width="781" />
+                                                </a>
+											{% endif %}
+                                            <h3>{{ translation.createtime }} -- 创建人: {{ translation.user }}</h3>
+{#											<p>#}
+{#                                                {{ translation.content |safe| truncatewords_html:30 }}#}
+{#                                            </p>#}
+{#											<ul class="actions">#}
+{#												<li><a href="{% url 'translation_detail' pk=translation.id %}" class="button button-icon icon icon-file">Continue Reading</a></li>#}
+{#											</ul>#}
+										</article>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if is_paginated %}
+{#                                    <div class="pagination">#}
+                                    <article class="is-highlight">
+                                        <span class="page-links">
+                                            {% if page_obj.has_previous %}
+                                                <a href="{% url 'translation' %}?page={{ page_obj.previous_page_number }}">上一页</a>
+                                            {% endif %}
+                                            <span class="page-current">
+                                                第 {{ page_obj.number }} 页， 共 {{ page_obj.paginator.num_pages }}页。
+                                            </span>
+                                            {% if page_obj.has_next %}
+                                                <a href="{% url 'translation' %}?page={{ page_obj.next_page_number }}">下一页</a>
+                                            {% endif %}
+                                        </span>
+                                    </article>
+{#                                    </div>#}
+                                {% endif %}
+								</div>
+
+							<!-- Sidebar -->
+								<div id="sidebar" class="4u">
+									<!-- Excerpts -->
+										<section>
+											<ul class="divided">
+                                            {% if sidepanel %}
+                                                {% for panel in sidepanel %}
+                                                {% if not panel.thumbnail %}
+												<li>
+													<!-- Excerpt -->
+														<article class="is-excerpt">
+															<header>
+																<span class="date">{{ panel.createtime }}</span>
+																<h3><a href="{% url 'translation_detail' pk=panel.id %}">{{ panel.title }}</a></h3>
+															</header>
+															<p>{{ panel.content|safe|truncatewords_html:10 }}</p>
+														</article>
+												</li>
+                                                {% else %}
+												<li>
+													<!-- Highlight -->
+														<article class="is-highlight">
+															<a href="{% url 'translation_detail' pk=panel.id %}" class="image image-left">
+                                                                <img src="{{ MEDIA_URL }}{{ panel.thumbnail }}" alt="{{ panel.title }}"/>
+                                                            </a>
+															<p>{{ panel.content|safe|truncatewords_html:10 }}</p>
+															<ul class="actions">
+																<li><a href="{% url 'translation_detail' pk=panel.id %}" class="button button-icon icon icon-file">
+                                                                    Learn More</a>
+                                                                </li>
+															</ul>
+														</article>
+
+												</li>
+                                                {% endif %}
+                                                {% endfor %}
+											</ul>
+                                        {% else %}
+                                                暂无数据
+                                        {% endif %}
+										</section>
+
+								</div>
+						</div>
+					</div>
+			</div>
+{% endblock body %}

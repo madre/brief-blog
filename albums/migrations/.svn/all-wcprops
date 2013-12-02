@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/brief/!svn/ver/230/2/albums/migrations
+END
+0001_initial.py
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/brief/!svn/ver/230/2/albums/migrations/0001_initial.py
+END
+0002_auto__chg_field_brief_brief.py
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/brief/!svn/ver/230/2/albums/migrations/0002_auto__chg_field_brief_brief.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/brief/!svn/ver/230/2/albums/migrations/__init__.py
+END
+0003_auto__del_brief.py
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/brief/!svn/ver/230/2/albums/migrations/0003_auto__del_brief.py
+END

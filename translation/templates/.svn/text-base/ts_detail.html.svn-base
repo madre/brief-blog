@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+{% load staticfiles %}
+<!--
+	Astral 2.1 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>{{ translation.title }}</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet" />
+		<script src="{% static "translation/js/jquery.min.js" %}"></script>
+		<script src="{% static "translation/js/config.js" %}"></script>
+		<script src="{% static "translation/js/skel.min.js" %}"></script>
+		<noscript>
+			<link rel="stylesheet" href="{% static "translation/css/skel-noscript.css" %}"/>
+			<link rel="stylesheet" href="{% static "translation/css/style.css" %}" />
+			<link rel="stylesheet" href="{% static "translation/css/style-desktop.css" %}" />
+			<link rel="stylesheet" href="{% static "translation/css/noscript.css" %}" />
+		</noscript>
+		<!--[if lte IE 8]><script src="{% static "js/html5shiv.js" %}"></script><link rel="stylesheet" href="{% static "css/ie8.css"  %}"/><![endif]-->
+	</head>
+	<body class="homepage">
+
+		<!-- Wrapper-->
+			<div id="wrapper">
+				<!-- Nav -->
+					<nav id="nav">
+						<a href="#me" class="icon icon-eye-close active"><span>原文</span></a>
+						<a href="#work" class="icon icon-eye-open"><span>译文</span></a>
+						<a href="#email" class="icon icon-exchange"><span>中英</span></a>
+						<a href="{% url "translation" %}" class="icon icon-home"><span>回首页</span></a>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						
+						<!-- Me -->
+							<article id="me" class="panel">
+                                <header>
+								<h2>{{ translation.title }}</h2>
+                                </header>
+								<p>
+									{{ translation.origin_content|safe }}
+								</p>
+							</article>
+
+						<!-- Work --> 
+							<article id="work" class="panel">
+                                <header>
+								<h2>{{ translation.tran_title }}</h2>
+                                </header>
+								<p>
+									{{ translation.tran_content|safe }}
+								</p>
+
+							</article>
+
+						<!-- Email -->
+							<article id="email" class="panel">
+								<p>
+									{{ translation.o_t_content|safe }}
+								</p>
+							</article>
+
+					</div>
+				<!-- Footer 
+					<div id="footer">
+						<ul class="links">
+							<li>{{ translation.title }}</li>
+						</ul>
+					</div>
+                -->
+			</div>
+
+	</body>
+</html>

@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/brief/!svn/ver/248/2/blog/templates
+END
+blog_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/brief/!svn/ver/248/2/blog/templates/blog_list.html
+END
+left-sidebar.html
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/brief/!svn/ver/230/2/blog/templates/left-sidebar.html
+END
+no-sidebar.html
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/brief/!svn/ver/230/2/blog/templates/no-sidebar.html
+END
+blog_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/brief/!svn/ver/248/2/blog/templates/blog_detail.html
+END

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block head_title %}创建简语{% endblock head_title %}
+{% block body %}
+<div id="features-wrapper">
+    <section id="features" class="container">
+        <header>
+            <h2>每日生活<strong>简语</strong>!</h2>
+        </header>
+        <div class="row">
+            <form action="{% url "brief_create" %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+            {% endfor %}
+            {# Include the visible fields #}
+            {% for field in form.visible_fields %}
+                <div class="actions">
+                    {{ field.errors }}
+                    <p>{{ field }}</p>
+                </div>
+            {% endfor %}
+            <p><input type="submit" value="Create" /></p>
+            </form>
+        </div>
+    </section>
+</div>
+{% endblock %}

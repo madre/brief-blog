@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/brief/!svn/ver/248/2/brief
+END
+admin.py
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/brief/!svn/ver/230/2/brief/admin.py
+END
+views.py
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/brief/!svn/ver/233/2/brief/views.py
+END
+__init__.py
+K 25
+svn:wc:ra_dav:version-url
+V 39
+/brief/!svn/ver/230/2/brief/__init__.py
+END
+models.py
+K 25
+svn:wc:ra_dav:version-url
+V 37
+/brief/!svn/ver/231/2/brief/models.py
+END
+urls.py
+K 25
+svn:wc:ra_dav:version-url
+V 35
+/brief/!svn/ver/230/2/brief/urls.py
+END
+forms.py
+K 25
+svn:wc:ra_dav:version-url
+V 36
+/brief/!svn/ver/230/2/brief/forms.py
+END

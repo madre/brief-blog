@@ -1,0 +1,25 @@
+{% extends "pic_base.html" %}
+{% load staticfiles %}
+
+{% block head_title %}{{ albums_detail.title }}-图片秀{% endblock head_title %}
+
+{% block body %}
+<div id="main">
+				<div id="reel">
+					<!-- Header Item -->
+
+						<div id="header" class="item" data-width="400">
+							<p>{{ albums_detail.title }}</p>
+                            {{ albums_detail.description }}
+						</div>
+
+					<!-- Thumb Items -->
+                        {% for pic in albums_detail.pictures_set.all %}
+						<article class="item thumb" data-width="282">
+							<h2>{{ pic.title }}</h2>
+							<a href="{{ MEDIA_URL }}{{ pic.thumbnail }}"><img src="{{ MEDIA_URL }}{{ pic.thumbnail }}" alt=""></a>
+						</article>
+                        {% endfor %}
+				</div>
+			</div>
+{% endblock %}

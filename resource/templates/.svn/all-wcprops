@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/brief/!svn/ver/248/2/resource/templates
+END
+topic_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/brief/!svn/ver/248/2/resource/templates/topic_detail.html
+END
+resource_list.html
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/brief/!svn/ver/248/2/resource/templates/resource_list.html
+END
+resource_detail.html
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/brief/!svn/ver/248/2/resource/templates/resource_detail.html
+END

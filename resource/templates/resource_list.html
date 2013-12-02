@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% block head_title %}程序库{% endblock head_title %}
+{% block body %}
+		<!-- Features Wrapper -->
+			<div id="features-wrapper">
+
+				<!-- Features -->
+					<section id="features" class="container">
+						<header>
+							<h2>知识共享——<strong>开源</strong>!</h2>
+						</header>
+
+                        <div>
+                            <h3 style="text-align: left">最新发布</h3>
+                            <!--<small>(<a href="{% url 'resource_list' %}">更多</a>)</small>-->
+                            <table class="style1">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Topics</th>
+                                        <th>User</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for resource in resource_list %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td><a href="{{ resource.get_absolute_url }}">{{ resource.title }}</a></td>
+                                        <td>{% for topic in resource.topics.all %}{% if not forloop.first %}, {% endif %}<a href="{{ topic.get_absolute_url }}">{{ topic.name }}</a>{% endfor %}</td>
+                                        <td>{{ resource.user }}</td>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+						<div class="row">
+                            <h3 style="text-align: left">流行主题 </h3>
+                            <!--<small>(<a href="{% url 'resource_list' %}">更多</a>)</small>-->
+                            {% for topic in topic_list %}
+							<div class="2u">
+
+								<!-- Feature -->
+									<section>
+										<a href="{% url 'topic_detail' pk=topic.id %}" class="image image-full">
+                                            <img src="{{ MEDIA_URL }}{{ topic.thumbnail }}" alt="{{ topic.name }}" />
+                                        </a>
+										<header>
+											<h3><a href="{% url 'albums_detail' pk=topic.id %}">{{ topic.name }}</a></h3>
+										</header>
+										<p>
+                                            {{ topic.help_text|safe }}
+                                        </p>
+									</section>
+
+							</div>
+                            {% endfor %}
+						</div>
+
+{#						<ul class="actions">#}
+{#							<li><a href="{% url 'albums_list' pk=album.id %}" class="button button-icon icon icon-file">Tell Me More</a></li>#}
+{#						</ul>#}
+					</section>
+
+			</div>
+{% endblock body %}

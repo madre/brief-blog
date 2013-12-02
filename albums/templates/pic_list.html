@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!--
+	Strongly Typed 1.0 by HTML5 UP
+	html5up.net | @n33co
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% block head_title %}相册 - 漫散、悠闲、游走{% endblock head_title %}
+{% block body %}
+		<!-- Features Wrapper -->
+			<div id="features-wrapper">
+
+				<!-- Features -->
+					<section id="features" class="container">
+						<header>
+							<h2>漫散、悠闲、游走在<strong>世间</strong>!</h2>
+						</header>
+						<div class="row">
+                            {% for album in albums_list %}
+							<div class="4u">
+
+								<!-- Feature -->
+									<section>
+										<a href="{% url 'albums_detail' pk=album.id %}" class="image image-full">
+                                            <img src="{{ MEDIA_URL }}{{ album.thumbnail }}" alt="{{ album.title }}" />
+                                        </a>
+										<header>
+											<h3><a href="{% url 'albums_detail' pk=album.id %}">{{ album.title }}</a></h3>
+										</header>
+										<p>
+                                            {{ album.description|safe }}
+                                        </p>
+									</section>
+
+							</div>
+                            {% endfor %}
+						</div>
+{#						<ul class="actions">#}
+{#							<li><a href="{% url 'albums_list' pk=album.id %}" class="button button-icon icon icon-file">Tell Me More</a></li>#}
+{#						</ul>#}
+					</section>
+
+			</div>
+{% endblock body %}

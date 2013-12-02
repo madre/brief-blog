@@ -1,0 +1,25 @@
+#coding=utf-8
+"""
+__create_time__ = '13-10-14'
+__author__ = 'Madre'
+"""
+# 线上数据库的配置
+MYSQL_HOST = 'w.rdc.sae.sina.com.cn'
+MYSQL_PORT = '3307'
+MYSQL_USER = 'j1ymxxmoo3'
+MYSQL_PASS = '3hjl0wwi0zwxzh0ximxk5lyili0yl45y5545ij31'
+MYSQL_DB   = 'app_brief'
+
+from sae._restful_mysql import monkey
+monkey.patch()
+
+DATABASES = {
+    'default': {
+        'ENGINE':   'django.db.backends.mysql',
+        'NAME':     MYSQL_DB,
+        'USER':     MYSQL_USER,
+        'PASSWORD': MYSQL_PASS,
+        'HOST':     MYSQL_HOST,
+        'PORT':     MYSQL_PORT,
+    }
+}
